@@ -1,0 +1,10 @@
+
+ALTER proc [dbo].[snavdeg]
+@snav as varchar(10)
+as
+begin
+
+select ogxno,t2.ograd,t2.ogrsoyad,t2.sınıfı,ROW_NUMBER() OVER (ORDER BY  puan desc) AS sra,puan from snavlar t1 
+inner join ogrkayt t2 on t1.ogxno = t2.ogrno where t1.snavadı=@snav
+
+end
